@@ -1,28 +1,48 @@
-### Project descriptions
-This is the project 4 of Udacity in the Front End developer ND. In this project we built and configure a backend with webpack using online API with key and ID. Also, the tests are did with Jest in the required folder. The languages used are:
+### About
+We will build a web tool that allows users to run Natural Language Processing (NLP) on articles or blogs found on other websites. NLP is the ability of an application to understand the human language, written or oral. This project is used with external API called Aylien.
 
-- Javascript
-- Node 
-- HTML
-- CSS
+### Let's go 
+The required plugins for this project are:
+```
+cd<project directory>
+npm install
+npm i -D @babel/core @babel/preset-env babel-loader
+npm i -D style-loader node-sass css-loader sass-loader
+npm i -D clean-webpack-plugin
+npm i -D html-webpack-plugin
+npm i -D mini-css-extract-plugin
+npm i -D optimize-css-assets-webpack-plugin terser-webpack-plugin
+npm i -D workbox-webpack-plugin
+```
+### Aylien
+I used Aylien as external API for this project. Sign up at this address https://aylien.com/product/news-api and create your account. Then, you will get credentials (ID and Key) to put in the project.
+Install the dotenv using npm and create the `.env` file. You should fill in the `.env` file with your own credentials created at Aylien website.
+```
+API_ID="your credentials"
+API_KEY="your credentials"
+```
+Note that to refer ennvironmental variable I used `process.enc`.
+Create your `.gitignore` and put `.env`, `node_modules`, and `dist` inside.
 
+### Testing the code with Jest
+- Install Jest ```npm install --save-dev jest```
+- To test the project you can run `npm run test`
+
+### Service Workers
+Service workers are installed in order for the project to be available when server is stopped.
 
 ### How to run the project
-Clone the project online using the the github repo https://github.com/ETEdwidge/evaluate-news-nlp-edwidge. Create  a folder `dist` and make sure to add the file `index.html`. Also, you should create `.env` and use the following credentials
-
+# Build and start the webpack dev server at port 8080
 ```
-API_ID="see the student comment"
-API_KEY="see the student comment"
+npm run build-dev
 ```
 
-After, you should launch the following commands:
- `npm install`
- `npm run test`
- `npm run start`
+# generate a `dist` folder for prod
+```
+npm run build-prod
+```
+# Run the Express server on port 8081
+```
+npm start 
+```
 
- Open the browser and launch `localhost:8080`
-
- Note that when I am done the project locally, I put `dist`, `node modules` folders, and `.env` file in the `gitignore`. Just follow the specifications above to launch the project as well.
--
-### Dependencies
-The dependencies of this project can be found in the `package.json`.

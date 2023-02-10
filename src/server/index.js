@@ -4,6 +4,10 @@ dotenv.config();
 var path = require('path')
 const express = require('express')
 const mockAPIResponse = require('./mockAPI.js')
+const fetch = require('node-fetch');
+var cors = require('cors');
+var bodyParser = require('body-parser')
+var requestPost = require('./PostRoute.js')
 
 const app = express()
 
@@ -14,6 +18,15 @@ var textapi = new aylien({
   application_id: process.env.API_ID,
   application_key: process.env.API_KEY
 });
+
+
+app.use(cors())
+
+app.use(bodyParser.json())
+
+app.use(bodyParser.urlencoded({
+  extended: true
+}))
 
 app.use(express.static('dist')) 
 
@@ -31,3 +44,8 @@ app.listen(8080, function () {
 app.get('/test', function (req, res) {
     res.send(mockAPIResponse)
 })
+
+// Post for article analysis
+app.post('/article', requestPost.validateR, requestPost.registerR);
+
+module.exports = app;
